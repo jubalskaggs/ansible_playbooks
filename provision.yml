@@ -1,0 +1,20 @@
+---
+
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: print out the hostname of target
+    command: hostname
+
+  - name: Add app user
+    user:
+      name: app
+      comment: Application User
+      uid: 1994
+      groups: staff
+      shell: /bin/bash
+      generate_ssh_key: yes
+      ssh_key_bits: 2048
+      ssh_key_file: .ssh/id_rsa
